@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap') ; 
+
+
+
+
+:root {
+}
+
+/* Aliases used by components */
+:root {
+  --bg-page: var(--background-1);
+  --panel: rgba(255, 255, 255, 0.03);
+  --text: var(--text-color);
+  --text-muted: var(--color-body);
+  --bg-card: rgba(255,255,255,0.02);
+  --brand: var(--secondary);
+  --accent: var(--secondary);
+}
+
+/* Light theme overrides */
+[data-theme='light'] {
+  --primary: #f8fafc;
+  --primary-dark: #eef2f7;
+  --secondary: #7c3aed;
+  --text-color: #0f1724;
+  --color-body: #475569;
+  --background-1: linear-gradient(145deg, #ffffff, #f3f4f6);
+  --background-1-hover: linear-gradient(180deg,#f8fafc,#eef2f7);
+  --bg-page: var(--background-1);
+  --panel: rgba(15, 23, 36, 0.04);
+  --bg-card: rgba(2,6,23,0.02);
+  --text: var(--text-color);
+  --text-muted: var(--color-body);
+}
+
+/* Dark theme explicit overrides (keeps legacy values) */
+[data-theme='dark'], .dark {
+  --primary: #212428; 
+  --primary-dark: #1e2125; 
+  --secondary: #ff014f;
+  --text-color: #c4cfde;  
+  --color-body:#878e99; 
+  --background-1: linear-gradient(145deg, #1e2024, #23272b);
+  --bg-page: var(--background-1);
+  --panel: rgba(255,255,255,0.03);
+  --bg-card: rgba(255,255,255,0.02);
+  --text: var(--text-color);
+  --text-muted: var(--color-body);
+}
+
+* {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+body {
+  box-sizing: border-box;
+  margin: 0; 
+  padding: 0; 
+  background-color: var(--primary);
+  color: var(--text-color);
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+html, body {
+  transition: background-color 0.28s ease, color 0.28s ease;
+}
+
+h1, h2 {
+  font-family: "Montserrat", sans-serif !important;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}

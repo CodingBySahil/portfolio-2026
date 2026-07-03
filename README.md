@@ -251,10 +251,10 @@ https://linkedin.com/in/codingbysahil
 https://github.com/CodingBySahil
 
 🌐 Portfolio  
-not availble right now
+https://example.com
 
 📧 Email  
-codingbysahil@gmail.com
+hello@example.com
 
 ---
 

@@ -1,0 +1,15 @@
+.btn {
+  position: fixed;
+  right: 18px;
+  bottom: 28px;
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: linear-gradient(135deg,#5b8cff,#7d5bff);
+  color: #fff;
+  border: none;
+  z-index: 70;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 8px 20px rgba(18,22,32,0.35);
+}

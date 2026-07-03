@@ -1,0 +1,97 @@
+.cardContainer {
+    height: auto;
+    min-width: 250px;
+    padding: 30px;
+    background: linear-gradient(145deg, #1e2024, #23272b);
+    box-shadow: var(--shadow-1);
+    border-radius: 10px;
+    transition: all 0.5s;
+    overflow: hidden;
+    cursor: pointer;
+
+    .inner {
+        width: 100%;
+        height: auto;
+
+        .imageContainer {
+            width: 100%;
+            border-radius: 20px;
+            overflow: hidden;
+            height: 250px;
+        }
+
+        img {
+            object-fit: cover;
+            border-radius: 10px;
+            transition: all .4s ease;
+            height: 100%;
+            width: 100%;
+        }
+
+        .cardMeta {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 12px;
+            
+
+            a {
+                color: var(--secondary);
+                font-size: 12px;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+            }
+
+            .cardMetaRight {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                gap: 5px;
+    
+            }
+
+        }
+
+        
+
+    }
+
+    .cardTitle {
+        color: var(--color-lightn);
+        font-weight: 600;
+        font-size: 18px;
+        margin-top: 24px;
+        transition: all .4s ease;
+        display: block;
+
+        svg {
+            display: inline;
+            margin-left: 6px;
+            transform: translateY(5px);
+            opacity: 0;
+            transition: all .4s ease;
+            fill: var(--secondary);
+        }
+
+        &:hover svg {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        &:hover{
+            color: var(--secondary);
+        }
+    }
+
+
+
+    &:hover .inner img {
+        transform: scale(1.1);
+    }
+
+    &:hover {
+        background: var(--background-1-hover);
+    }
+
+}
+
+
