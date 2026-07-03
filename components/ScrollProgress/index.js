@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import styles from './scrollProgress.module.scss';
 
 export default function ScrollProgress() {
   const [progress, setProgress] = useState(0);
@@ -19,8 +18,8 @@ export default function ScrollProgress() {
   }, []);
 
   return (
-    <div className={styles.progress} aria-hidden>
-      <div className={styles.bar} style={{ width: `${progress}%` }} />
+    <div className="fixed top-0 left-0 h-1 w-full z-50 bg-transparent" aria-hidden>
+      <div className="h-full bg-gradient-to-r from-blue-600 to-indigo-600 transition-all duration-200" style={{ width: `${progress}%` }} />
     </div>
   );
 }

@@ -1,47 +1,46 @@
-"use client"
+'use client';
 
-import styled from "styled-components";
-import Link from "next/link";
+import Link from 'next/link';
 
-export const Title = styled.h1`
-    font-size: 2.5rem; 
-    color: red; 
-`
-export const Button = styled.button`
-  background: ${props => props.$primary ? "#BF4F74" : "white"};
-  color: ${props => props.$primary ? "white" : "#BF4F74"};
-  font-size: 1em;
-  margin: 1em;
-  padding: 0.25em 1em;
-  border: 2px solid #BF4F74;
-  border-radius: 3px;
-`;
+// Tailwind-based UI components
+// All styling is now handled through Tailwind CSS classes
 
-export const RoundButton = styled.button`
-  padding: 14px; 
-  color: var(--secondary); 
-  border-radius: 50%;
-  background-color: linear-gradient(145deg, #1e2024, #23272b); 
-  box-shadow: var(--shadow-1);
-  transition: all .4s ;
-  &:hover{
-    scale: 1.06;
-  }
-`
-export const SquareButton = styled(Link)`
-  height: 60px; 
-  width: 60px; 
-  line-height: 60px; 
-  font-size: 14px; 
-  padding: 15px; 
-  border-radius: 6px;
-  background: linear-gradient(145deg, #1e2024, #23272b); 
-  transition: all .4s ;
-  box-shadow: 10px 10px 19px #1c1e22, -10px -10px 19px #262a2e; 
-  display: grid; 
-  place-items: center;
+export const Title = ({ children, ...props }) => (
+  <h1 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white" {...props}>{children}</h1>
+);
 
-  &:hover {
-    transform: translateY(-5px);
-  }
-`
+export const Button = ({ children, primary, ...props }) => (
+  <button 
+    className={`px-6 py-3 rounded-lg font-semibold transition-all duration-300 ${
+      primary
+        ? 'bg-blue-600 text-white hover:bg-blue-700'
+        : 'bg-white text-blue-600 border-2 border-blue-600 hover:bg-blue-50'
+    }`}
+    {...props}
+  >
+    {children}
+  </button>
+);
+
+export const RoundButton = ({ children, onClick, ...props }) => (
+  <button
+    className="p-3 rounded-full bg-gradient-to-br from-slate-700 to-slate-800 dark:from-slate-600 dark:to-slate-700 text-slate-300 dark:text-slate-200 hover:text-white transition-all duration-300 hover:scale-105 active:scale-95 shadow-lg"
+    onClick={onClick}
+    {...props}
+  >
+    {children}
+  </button>
+);
+
+export const SquareButton = ({ children, href, ...props }) => {
+  const Component = href ? Link : 'button';
+  return (
+    <Component
+      href={href}
+      className="inline-flex items-center justify-center w-16 h-16 rounded-xl bg-gradient-to-br from-slate-700 to-slate-800 dark:from-slate-600 dark:to-slate-700 text-slate-300 dark:text-slate-200 hover:text-white transition-all duration-300 hover:-translate-y-1 active:translate-y-0 shadow-lg hover:shadow-xl"
+      {...props}
+    >
+      {children}
+    </Component>
+  );
+};
