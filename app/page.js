@@ -150,7 +150,7 @@ export default function Home() {
         <div className={styles.aboutGrid}>
           <div>
             <p>
-              I'm passionate about building polished web products and teaching
+              I&apos;m passionate about building polished web products and teaching
               others to do the same. My work blends engineering rigor with
               thoughtful design to ship reliable, maintainable experiences.
             </p>
@@ -279,9 +279,9 @@ export default function Home() {
 
       <section className={styles.contactCta} id="contact">
         <div className={styles.ctaInner}>
-          <h2>Let's build something amazing together</h2>
+          <h2>Let&apos;s build something amazing together</h2>
           <div className={styles.ctaBtns}>
-            <Link href="/contact" className={styles.btnPrimary}>Let's Talk</Link>
+            <Link href="/contact" className={styles.btnPrimary}>Let&apos;s Talk</Link>
             <a href="https://wa.me/923192141818" className={styles.btnAlt} target="_blank" rel="noreferrer">WhatsApp</a>
             <a href="mailto:hello@example.com" className={styles.btnGhost}>Email</a>
           </div>
