@@ -1,199 +1,103 @@
-"use client"
+'use client';
 
-import Link from "next/link";
-import React, { useEffect, useState } from "react";
-import { FaBars, FaFacebookF, FaLinkedinIn, FaTimes, FaTwitter } from "react-icons/fa";
-import { CiMenuBurger } from "react-icons/ci";
-import { IoCloseOutline } from "react-icons/io5";
-import logo from "@/assets/logo.svg"
-import Image from "next/image";
-import styles from "@/components/Header/headers.module.scss"
-import { RoundButton, SquareButton } from "../shared/StyledComponents";
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
+import Image from 'next/image';
+import { FaFacebookF, FaLinkedinIn, FaTwitter } from 'react-icons/fa';
+import { CiMenuBurger } from 'react-icons/ci';
+import { IoCloseOutline } from 'react-icons/io5';
+import logo from '@/assets/logo.svg';
+
+const links = [
+  { id: 1, label: 'home', href: '#hero' },
+  { id: 2, label: 'features', href: '#features' },
+  { id: 3, label: 'portfolio', href: '#portfolio' },
+  { id: 4, label: 'resume', href: '#resume' },
+  { id: 5, label: 'testimonial', href: '#testimonial' },
+  { id: 6, label: 'blog', href: '#blog' },
+  { id: 7, label: 'contact', href: '#contact' },
+];
 
 const Header = () => {
-    const [nav, setNav] = useState(false);
-    const [activeSection, setActiveSection] = useState("home")
-    const [isSticky, setIsSticky] = useState(false)
-    const handleClick = (sectionId) => {
-        setActiveSection(sectionId)
-    }
+  const [navOpen, setNavOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
+  const [isSticky, setIsSticky] = useState(false);
 
-    useEffect( ()=> {
-        const handleScroll = () => {
-            const scroll = window.scrollY
-            setIsSticky( scroll >= 200 )
-        }
-        window.addEventListener("scroll", handleScroll)
+  useEffect(() => {
+    const handleScroll = () => setIsSticky(window.scrollY > 200);
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
-        return () => {
-            window.removeEventListener("scroll", handleScroll)
-        }
-    }, [])
-    const links = [
-        {
-            id: 1,
-            link: 'home',
-            href: '#hero',
-        },
-        {
-            id: 2,
-            link: 'features',
-            href: '#features',
-        },
-        {
-            id: 3,
-            link: 'portfolio',
-            href: '#portfolio',
-        },
-        {
-            id: 4,
-            link: 'resume',
-            href: '#resume',
-        },
-        {
-            id: 5,
-            link: 'testimonial',
-            href: '#testimonial',
-        },
-        {
-            id: 6,
-            link: 'clients',
-            href: '#clients',
-        },
-        {
-            id: 7,
-            link: 'pricing',
-            href: '#pricing',
-        },
-        {
-            id: 8,
-            link: 'blog',
-            href: '#blog',
-        },
-        {
-            id: 9,
-            link: 'contact',
-            href: '#contact',
-        },
-    ];
+  return (
+    <nav className={`fixed inset-x-0 top-0 z-50 transition duration-300 ${isSticky ? 'backdrop-blur-xl bg-white/80 shadow-sm dark:bg-slate-900/90' : 'bg-transparent'}`}>
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+        <Link href="/" className="flex items-center gap-3 text-slate-900 dark:text-white" aria-label="Home">
+          <Image src={logo} alt="CodingBySahil logo" width={44} height={44} className="rounded-2xl" />
+          <span className="text-lg font-semibold">CodingBySahil</span>
+        </Link>
 
-    return (
-        <nav
-            className={`flex justify-between items-center w-full h-20 p-4 md:p-12 nav  ${
-                isSticky ? styles.sticky : ''
-            } `}>
-            <div>
-                <Link className='' href='/' rel='noreferrer'>
-                    <Image
-                        src={logo}
-                        height={70}
-                        className='h-[50px] w-fit'
-                        alt='logo'
-                    />
+        <div className="hidden md:flex items-center gap-8">
+          <ul className="flex items-center gap-6 text-sm font-medium text-slate-600 dark:text-slate-300">
+            {links.map(({ id, label, href }) => (
+              <li key={id}>
+                <Link
+                  href={href}
+                  onClick={() => setActiveSection(label)}
+                  className={`transition-colors duration-200 ${activeSection === label ? 'text-blue-600 dark:text-blue-400' : 'hover:text-slate-900 dark:hover:text-white'}`}
+                >
+                  {label}
                 </Link>
-            </div>
+              </li>
+            ))}
+          </ul>
+        </div>
 
-            <ul className='hidden md:flex'>
-                {links.map(({ id, link, href }) => (
-                    <li
-                        key={id}
-                        className={`nav-links px-4 cursor-pointer uppercase font-montserrat hover:text-secondary duration-200 link-underline opacity-70 text-[13px] ${
-                            activeSection == href.slice(1) ? styles.active : ''
-                        } `}>
-                        <Link
-                            href={href}
-                            alt={link}
-                            onClick={() => handleClick(href.slice(1))}>
-                            {link}
-                        </Link>
-                    </li>
-                ))}
+        <button
+          type="button"
+          className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-900 shadow-sm transition hover:bg-slate-100 dark:border-slate-700 dark:bg-slate-900 dark:text-white dark:hover:bg-slate-800 md:hidden"
+          aria-expanded={navOpen}
+          aria-label={navOpen ? 'Close menu' : 'Open menu'}
+          onClick={() => setNavOpen((value) => !value)}
+        >
+          {navOpen ? <IoCloseOutline size={20} /> : <CiMenuBurger size={20} />}
+        </button>
+      </div>
+
+      {navOpen && (
+        <div className="border-t border-slate-200 bg-white/95 py-6 shadow-xl backdrop-blur-xl dark:border-slate-700 dark:bg-slate-950/95 md:hidden">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <ul className="space-y-3 text-base font-semibold text-slate-700 dark:text-slate-200">
+              {links.map(({ id, label, href }) => (
+                <li key={id}>
+                  <Link
+                    href={href}
+                    onClick={() => setNavOpen(false)}
+                    className="block rounded-2xl px-4 py-3 transition hover:bg-slate-100 dark:hover:bg-slate-800"
+                  >
+                    {label}
+                  </Link>
+                </li>
+              ))}
             </ul>
-            <div
-                onClick={() => setNav(!nav)}
-                className='cursor-pointer pr-4  md:hidden '>
-                {nav ? (
-                    <RoundButton>
-                        {' '}
-                        <IoCloseOutline size={20} />
-                    </RoundButton>
-                ) : (
-                    <RoundButton>
-                        {' '}
-                        <CiMenuBurger size={20} />{' '}
-                    </RoundButton>
-                )}
+
+            <div className="mt-8 flex gap-3">
+              <a href="https://github.com/CodingBySahil" target="_blank" rel="noreferrer" className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-slate-100 text-slate-700 transition hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700">
+                <FaFacebookF />
+              </a>
+              <a href="https://www.linkedin.com/in/codingBySAHIL" target="_blank" rel="noreferrer" className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-slate-100 text-slate-700 transition hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700">
+                <FaLinkedinIn />
+              </a>
+              <a href="#" className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-slate-100 text-slate-700 transition hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-200 dark:hover:bg-slate-700">
+                <FaTwitter />
+              </a>
             </div>
-
-            {nav && (
-                <div className='absolute top-0 left-0 h-screen w-full bg-[#111111a8]'>
-                    <div className='flex p-6 flex-col justify-start items-start absolute top-0 left-0 w-2/3 h-screen bg-[#191b1e] overflow-y-auto'>
-                        <div className='m-4 border-b border-b-[#ffffff12] pb-6 flex flex-wrap justify-between'>
-                            <Link className='' href='/' rel='noreferrer'>
-                                <Image
-                                    src={logo}
-                                    height={70}
-                                    className='h-[50px] w-fit'
-                                    alt='CodingBySahil logo'
-                                />
-                            </Link>
-                            <RoundButton onClick={() => setNav(false)}>
-                                {' '}
-                                <IoCloseOutline size={20} />
-                            </RoundButton>
-                            <p className='mt-6 text-body w-full'>
-                                A modern, personal portfolio built to showcase experience,
-                                projects, and technical expertise in full stack web development.
-                            </p>
-                        </div>
-
-                        <ul className='w-full border-b border-b-[#ffffff12] pb-6'>
-                            {links.map(({ id, link, href }) => (
-                                <li
-                                    key={id}
-                                    className={`px-4 cursor-pointer capitalize py-2 text-md font-montserrat ${
-                                        activeSection == href.slice(1)
-                                            ? styles.active
-                                            : ''
-                                    }`}>
-                                    <Link
-                                        alt={link}
-                                        onClick={() => {
-                                            handleClick(href.slice(1));
-                                            setNav(!nav);
-                                        }}
-                                        href={href}>
-                                        {link}
-                                    </Link>
-                                </li>
-                            ))}
-                        </ul>
-
-                        <div className='m-4'>
-                            <p>FIND ME WITH</p>
-                            <div className=' flex gap-4 mt-4'>
-                                <SquareButton href={'#'}>
-                                    <FaFacebookF size={20} />
-                                </SquareButton>
-
-                                <a href='#' className='social-icons'>
-                                    {' '}
-                                    <i className='facebook-icon'></i>{' '}
-                                </a>
-
-                                <SquareButton href={'#'}>
-                                    <FaTwitter size={20} />
-                                </SquareButton>
-                                <SquareButton href={'#'}>
-                                    <FaLinkedinIn size={20} />
-                                </SquareButton>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            )}
-        </nav>
-    );
+          </div>
+        </div>
+      )}
+    </nav>
+  );
 };
 
 export default Header;

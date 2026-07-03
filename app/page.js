@@ -4,7 +4,6 @@ import { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import myDP from '@/assets/myDP.jpg';
-import styles from './page.module.scss';
 import {
   heroHighlights,
   projects,
@@ -78,38 +77,50 @@ export default function Home() {
   }, []);
 
   return (
-    <main className={styles.page}>
-      <section className={styles.hero} aria-label="Hero">
-        <div className={styles.heroInner}>
-          <div className={styles.left}>
-            <p className={styles.overline}>Hello, I’m Muhammad Sahil</p>
-            <h1 className={styles.title}>
+    <main className="pb-16">
+      {/* Hero Section */}
+      <section className="py-12 md:py-16" aria-label="Hero">
+        <div className="flex gap-8 items-center max-w-4xl mx-auto px-5 lg:px-0">
+          <div className="flex-1">
+            <p className="text-blue-600 dark:text-blue-400 font-bold text-sm uppercase tracking-widest">
+              Hello, I&apos;m Muhammad Sahil
+            </p>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mt-1 mb-4 text-slate-900 dark:text-white">
               Building delightful products —
-              <span className={styles.highlight}> {displayed}</span>
-              <span className={styles.cursor} aria-hidden>▍</span>
+              <span className="text-blue-600 dark:text-blue-400 ml-2">{displayed}</span>
+              <span className="ml-2 text-blue-600 dark:text-blue-400 inline-block animate-pulse" aria-hidden>▍</span>
             </h1>
-            <p className={styles.lead}>
+            <p className="text-slate-600 dark:text-slate-400 max-w-2xl leading-relaxed mb-5">
               Full Stack MERN Developer, AI Instructor and mentor. I design,
               implement, and teach modern web applications with a focus on
               performance, accessibility and delightful UX.
             </p>
 
-            <div className={styles.heroCtas}>
-              <Link href="/resume.pdf" className={styles.btnPrimary} target="_blank">Download Resume</Link>
-              <Link href="#projects" className={styles.btnAlt}>View Projects</Link>
-              <Link href="/contact" className={styles.btnGhost}>Hire Me</Link>
+            <div className="flex gap-3 flex-wrap mb-6">
+              <Link href="/resume.pdf" className="inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:shadow-lg hover:-translate-y-1 transition-all duration-300" target="_blank">
+                Download Resume
+              </Link>
+              <Link href="#projects" className="inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white border border-slate-300 dark:border-slate-600 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                View Projects
+              </Link>
+              <Link href="/contact" className="inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold text-slate-900 dark:text-white border border-slate-300 dark:border-slate-600 hover:bg-slate-900 dark:hover:bg-white hover:text-white dark:hover:text-slate-900 transition-all duration-300">
+                Hire Me
+              </Link>
             </div>
 
-            <div className={styles.socialRow}>
-              <a href="https://github.com/CodingBySahil" target="_blank" rel="noreferrer">GitHub</a>
-              <a href="https://www.linkedin.com/in/codingBySAHIL" target="_blank" rel="noreferrer">LinkedIn</a>
+            <div className="flex gap-6">
+              <a href="https://github.com/CodingBySahil" target="_blank" rel="noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline text-sm font-semibold">
+                GitHub
+              </a>
+              <a href="https://www.linkedin.com/in/codingBySAHIL" target="_blank" rel="noreferrer" className="text-blue-600 dark:text-blue-400 hover:underline text-sm font-semibold">
+                LinkedIn
+              </a>
             </div>
           </div>
 
-          <div className={styles.right}>
-            <div className={styles.imageCard} aria-hidden>
-              <div className={styles.imageRing} />
-              <div className={styles.imagePlaceholder}>
+          <div className="w-96 hidden lg:block" aria-hidden>
+            <div className="relative rounded-3xl bg-gradient-to-br from-blue-500/10 to-purple-500/10 border border-blue-500/20 p-8">
+              <div className="w-80 h-80 relative rounded-2xl overflow-hidden">
                 <Image
                   src={myDP}
                   alt="Muhammad Sahil"
@@ -119,10 +130,10 @@ export default function Home() {
                   priority
                 />
               </div>
-              <div className={styles.floatIcons}>
-                {[ 'React', 'Next', 'Node', 'Mongo', 'TS', 'JS', 'Tailwind', 'AI' ].map((t, i) => (
-                  <div key={t} className={styles.floatIcon} style={{ ['--i']: i }}>
-                    {t}
+              <div className="space-y-3 mt-6">
+                {['React', 'Next', 'Node', 'Mongo', 'TS', 'JS', 'Tailwind', 'AI'].map((tech) => (
+                  <div key={tech} className="inline-block bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white px-3 py-1 rounded-full text-xs font-semibold mr-2 animate-float">
+                    {tech}
                   </div>
                 ))}
               </div>
@@ -131,159 +142,220 @@ export default function Home() {
         </div>
       </section>
 
-      <section className={styles.stats} aria-label="Statistics">
-        <div className={styles.statsInner}>
-          {stats.map((s, idx) => (
-            <div key={s.label} className={styles.statCard}>
-              <div className={styles.statValue}>{counts[idx]}{counts[idx] === s.value ? '+' : ''}</div>
-              <div className={styles.statLabel}>{s.label}</div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className={styles.aboutPreview} id="about">
-        <div className={styles.sectionHead}>
-          <p>About</p>
-          <h2>Professional Story & Mission</h2>
-        </div>
-        <div className={styles.aboutGrid}>
-          <div>
-            <p>
-              I&apos;m passionate about building polished web products and teaching
-              others to do the same. My work blends engineering rigor with
-              thoughtful design to ship reliable, maintainable experiences.
-            </p>
-            <p>
-              Mission: Empower learners and teams by delivering practical
-              systems and mentoring the next generation of engineers.
-            </p>
-            <Link href="/about" className={styles.readMore}>Read More →</Link>
-          </div>
-          <div className={styles.aboutCards}>
-            <div className={styles.card}>Teaching • Hands-on learning</div>
-            <div className={styles.card}>AI • Practical applications</div>
-            <div className={styles.card}>Development • Scalable systems</div>
+      {/* Stats Section */}
+      <section className="py-12 md:py-16 border-t border-b border-slate-200 dark:border-slate-700" aria-label="Statistics">
+        <div className="max-w-4xl mx-auto px-5 lg:px-0">
+          <div className="grid grid-cols-3 gap-4 md:gap-6">
+            {stats.map((s, idx) => (
+              <div key={s.label} className="text-center">
+                <div className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">
+                  {counts[idx]}{counts[idx] === s.value ? '+' : ''}
+                </div>
+                <div className="text-slate-600 dark:text-slate-400 text-sm mt-2">{s.label}</div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      <section className={styles.skills} id="skills">
-        <div className={styles.sectionHead}>
-          <p>Skills</p>
-          <h2>Core Competencies</h2>
-        </div>
-        <div className={styles.skillGrid}>
-          {skills.map((s) => (
-            <div key={s.category} className={styles.skillCard}>
-              <h4>{s.category}</h4>
-              <div className={styles.skillList}>
-                {s.items.map((it) => (
-                  <span key={it} className={styles.skillPill}>{it}</span>
-                ))}
-              </div>
+      {/* About Section */}
+      <section className="py-16 md:py-24" id="about">
+        <div className="max-w-5xl mx-auto px-5 lg:px-0">
+          <div className="mb-8">
+            <p className="text-blue-600 dark:text-blue-400 font-bold text-sm uppercase tracking-widest mb-2">About</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">Professional Story & Mission</h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="space-y-4">
+              <p className="text-slate-700 dark:text-slate-300 leading-relaxed">
+                I&apos;m passionate about building polished web products and teaching
+                others to do the same. My work blends engineering rigor with
+                thoughtful design to ship reliable, maintainable experiences.
+              </p>
+              <p className="text-slate-700 dark:text-slate-300 leading-relaxed">
+                Mission: Empower learners and teams by delivering practical
+                systems and mentoring the next generation of engineers.
+              </p>
+              <Link href="/about" className="inline-flex text-blue-600 dark:text-blue-400 hover:underline font-semibold">
+                Read More →
+              </Link>
             </div>
-          ))}
+            <div className="space-y-3">
+              {['Teaching • Hands-on learning', 'AI • Practical applications', 'Development • Scalable systems'].map((card) => (
+                <div key={card} className="bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-4 rounded-lg text-slate-900 dark:text-white font-medium">
+                  {card}
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
-      <section className={styles.projects} id="projects">
-        <div className={styles.sectionHead}>
-          <p>Featured</p>
-          <h2>Selected Projects</h2>
-        </div>
-        <div className={styles.featureGrid}>
-          {projects.map((p) => (
-            <article key={p.title} className={styles.featureCard}>
-              <div className={styles.featureMedia}>
-                <div className={styles.mediaPlaceholder} />
-                <span className={styles.ribbon}>{p.status}</span>
-              </div>
-              <div className={styles.featureBody}>
-                <h3>{p.title}</h3>
-                <p>{p.description}</p>
-                <div className={styles.techRow}>{p.tech.map((t) => <span key={t}>{t}</span>)}</div>
-                <div className={styles.actionsRow}>
-                  <Link href={p.github} target="_blank">GitHub</Link>
-                  <Link href={p.demo} target="_blank">Live Demo</Link>
+      {/* Skills Section */}
+      <section className="py-16 md:py-24" id="skills">
+        <div className="max-w-5xl mx-auto px-5 lg:px-0">
+          <div className="mb-8">
+            <p className="text-blue-600 dark:text-blue-400 font-bold text-sm uppercase tracking-widest mb-2">Skills</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">Core Competencies</h2>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+            {skills.map((s) => (
+              <div key={s.category} className="bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 p-4 rounded-lg">
+                <h4 className="font-semibold text-slate-900 dark:text-white mb-3">{s.category}</h4>
+                <div className="flex flex-wrap gap-2">
+                  {s.items.map((it) => (
+                    <span key={it} className="inline-block bg-white dark:bg-slate-700 text-slate-700 dark:text-slate-200 text-xs px-2 py-1 rounded-full font-medium">
+                      {it}
+                    </span>
+                  ))}
                 </div>
               </div>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className={styles.teaching}>
-        <div className={styles.sectionHead}>
-          <p>Teaching</p>
-          <h2>Mentorship & Courses</h2>
-        </div>
-        <div className={styles.teachGrid}>
-          <div className={styles.teachCard}>
-            <h4>Web Development</h4>
-            <p>Project based learning for practical skills.</p>
-          </div>
-          <div className={styles.teachCard}>
-            <h4>Artificial Intelligence</h4>
-            <p>AI fundamentals and applied workflows for engineers.</p>
-          </div>
-          <div className={styles.teachCard}>
-            <h4>Mentorship</h4>
-            <p>Career guidance, code reviews, and portfolio reviews.</p>
+            ))}
           </div>
         </div>
       </section>
 
-      <section className={styles.timeline}>
-        <div className={styles.sectionHead}>
-          <p>Journey</p>
-          <h2>Professional Timeline</h2>
-        </div>
-        <ol className={styles.timelineList}>
-          {experience.map((e) => (
-            <li key={e.role} className={styles.timelineItem}>
-              <strong>{e.period}</strong>
-              <h4>{e.role}</h4>
-              <p>{e.company}</p>
-            </li>
-          ))}
-        </ol>
-      </section>
-
-      <section className={styles.technologies}>
-        <div className={styles.sectionHead}>
-          <p>Technologies</p>
-          <h2>Tooling & Platforms</h2>
-        </div>
-        <div className={styles.techWall}>
-          {['React','Next.js','Node.js','MongoDB','TypeScript','Tailwind','Express','AI','Git','GitHub'].map((t) => (
-            <div key={t} className={styles.techItem}>{t}</div>
-          ))}
-        </div>
-      </section>
-
-      <section className={styles.testimonials}>
-        <div className={styles.sectionHead}>
-          <p>Testimonials</p>
-          <h2>What people say</h2>
-        </div>
-        <div className={styles.testWrap}>
-          {testimonials.map((t, i) => (
-            <blockquote key={t.name} className={`${styles.testCard} ${i === testIndex ? styles.visible : ''}`}>
-              <p>“{t.quote}”</p>
-              <footer>— {t.name}, <span>{t.role}</span></footer>
-            </blockquote>
-          ))}
+      {/* Projects Section */}
+      <section className="py-16 md:py-24" id="projects">
+        <div className="max-w-6xl mx-auto px-5 lg:px-0">
+          <div className="mb-8">
+            <p className="text-blue-600 dark:text-blue-400 font-bold text-sm uppercase tracking-widest mb-2">Featured</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">Selected Projects</h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {projects.map((p) => (
+              <article key={p.title} className="bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300">
+                <div className="relative h-48 bg-slate-200 dark:bg-slate-700 flex items-center justify-center overflow-hidden">
+                  <div className="w-full h-full bg-gradient-to-br from-blue-500/10 to-purple-500/10" />
+                  <span className="absolute top-3 right-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white text-xs px-3 py-1 rounded-full font-semibold">
+                    {p.status}
+                  </span>
+                </div>
+                <div className="p-5">
+                  <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2">{p.title}</h3>
+                  <p className="text-slate-600 dark:text-slate-400 text-sm mb-3">{p.description}</p>
+                  <div className="flex gap-2 flex-wrap mb-4">
+                    {p.tech.map((t) => (
+                      <span key={t} className="text-xs text-slate-600 dark:text-slate-400 bg-slate-200 dark:bg-slate-700 px-2 py-1 rounded">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="flex gap-3">
+                    <Link href={p.github} target="_blank" className="text-blue-600 dark:text-blue-400 hover:underline text-sm font-semibold">
+                      GitHub
+                    </Link>
+                    <Link href={p.demo} target="_blank" className="text-blue-600 dark:text-blue-400 hover:underline text-sm font-semibold">
+                      Live Demo
+                    </Link>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className={styles.contactCta} id="contact">
-        <div className={styles.ctaInner}>
-          <h2>Let&apos;s build something amazing together</h2>
-          <div className={styles.ctaBtns}>
-            <Link href="/contact" className={styles.btnPrimary}>Let&apos;s Talk</Link>
-            <a href="https://wa.me/923192141818" className={styles.btnAlt} target="_blank" rel="noreferrer">WhatsApp</a>
-            <a href="mailto:hello@example.com" className={styles.btnGhost}>Email</a>
+      {/* Teaching Section */}
+      <section className="py-16 md:py-24 bg-slate-50 dark:bg-slate-800/50">
+        <div className="max-w-5xl mx-auto px-5 lg:px-0">
+          <div className="mb-8">
+            <p className="text-blue-600 dark:text-blue-400 font-bold text-sm uppercase tracking-widest mb-2">Teaching</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">Mentorship & Courses</h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {['Web Development', 'Artificial Intelligence', 'Mentorship'].map((title, idx) => {
+              const descriptions = [
+                'Project based learning for practical skills.',
+                'AI fundamentals and applied workflows for engineers.',
+                'Career guidance, code reviews, and portfolio reviews.',
+              ];
+              return (
+                <div key={title} className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 p-6 rounded-lg">
+                  <h4 className="text-lg font-bold text-slate-900 dark:text-white mb-2">{title}</h4>
+                  <p className="text-slate-600 dark:text-slate-400">{descriptions[idx]}</p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Timeline Section */}
+      <section className="py-16 md:py-24">
+        <div className="max-w-5xl mx-auto px-5 lg:px-0">
+          <div className="mb-8">
+            <p className="text-blue-600 dark:text-blue-400 font-bold text-sm uppercase tracking-widest mb-2">Journey</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">Professional Timeline</h2>
+          </div>
+          <ol className="space-y-4">
+            {experience.map((e) => (
+              <li key={e.role} className="flex gap-4 pb-6 border-b border-slate-200 dark:border-slate-700 last:border-b-0">
+                <div className="text-blue-600 dark:text-blue-400 font-bold text-sm min-w-fit">{e.period}</div>
+                <div>
+                  <h4 className="text-lg font-bold text-slate-900 dark:text-white">{e.role}</h4>
+                  <p className="text-slate-600 dark:text-slate-400">{e.company}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      {/* Technologies Section */}
+      <section className="py-16 md:py-24 bg-slate-50 dark:bg-slate-800/50">
+        <div className="max-w-5xl mx-auto px-5 lg:px-0">
+          <div className="mb-8">
+            <p className="text-blue-600 dark:text-blue-400 font-bold text-sm uppercase tracking-widest mb-2">Technologies</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">Tooling & Platforms</h2>
+          </div>
+          <div className="flex flex-wrap gap-3">
+            {['React', 'Next.js', 'Node.js', 'MongoDB', 'TypeScript', 'Tailwind', 'Express', 'AI', 'Git', 'GitHub'].map((t) => (
+              <div key={t} className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 px-4 py-2 rounded-lg text-slate-900 dark:text-white font-semibold">
+                {t}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-16 md:py-24">
+        <div className="max-w-4xl mx-auto px-5 lg:px-0">
+          <div className="mb-8">
+            <p className="text-blue-600 dark:text-blue-400 font-bold text-sm uppercase tracking-widest mb-2">Testimonials</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white">What people say</h2>
+          </div>
+          <div className="relative h-40">
+            {testimonials.map((t, i) => (
+              <blockquote 
+                key={t.name}
+                className={`absolute inset-0 transition-opacity duration-500 ${i === testIndex ? 'opacity-100' : 'opacity-0'}`}
+              >
+                <p className="text-lg italic text-slate-700 dark:text-slate-300 mb-4">&quot;{t.quote}&quot;</p>
+                <footer className="text-slate-600 dark:text-slate-400">
+                  — {t.name}, <span className="font-semibold">{t.role}</span>
+                </footer>
+              </blockquote>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact CTA Section */}
+      <section className="py-16 md:py-24 bg-gradient-to-r from-blue-600 to-purple-600 text-white" id="contact">
+        <div className="max-w-3xl mx-auto px-5 lg:px-0 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold mb-8">Let&apos;s build something amazing together</h2>
+          <div className="flex gap-3 flex-wrap justify-center">
+            <Link href="/contact" className="inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold bg-white text-blue-600 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+              Let&apos;s Talk
+            </Link>
+            <a href="https://wa.me/923192141818" className="inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold bg-white/20 text-white border border-white/40 hover:shadow-lg hover:-translate-y-1 transition-all duration-300" target="_blank" rel="noreferrer">
+              WhatsApp
+            </a>
+            <a href="mailto:hello@example.com" className="inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold text-white border border-white/40 hover:bg-white/10 transition-all duration-300">
+              Email
+            </a>
           </div>
         </div>
       </section>

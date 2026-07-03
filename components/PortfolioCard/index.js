@@ -1,37 +1,29 @@
-import React from 'react';
-import styles from './portfolio.module.scss'
-import portfolio1 from '../../assets/portfolio-large-01.jpg'
-import portfolio2 from '../../assets/portfolio-large-04.jpg'
-import portfolio3 from '../../assets/portfolio-large-05.jpg'
-import portfolio4 from '../../assets/portfolio-large-06.jpg'
-import portfolio5 from '../../assets/portfolio-large-05.jpg'
 import Image from 'next/image';
-import Link from 'next/link';
-import { FaArrowAltCircleUp, FaHeart } from 'react-icons/fa';
 import { MdArrowOutward } from 'react-icons/md';
 
-const PortfolioCard = ({ img, category, icon, price, title }) => {
+const PortfolioCard = ({ img, category, title }) => {
   return (
-    <div>
-      <div className={styles.cardContainer}>
-        <div className={styles.inner}>
-          <div className={styles.imageContainer}>
-            <Image src={img} alt='project screenshot' width={350} />
-          </div>
-          <div className={styles.cardMeta}>
-            <Link href='#'> {category} </Link>
-            <div className={styles.cardMetaRight}>
-              {icon}
-              <p> {price} </p>
-            </div>
-          </div>
-          <Link className={styles.cardTitle} href={'#'}>
-            {title}
-            <MdArrowOutward />
-          </Link>
+    <article className="group overflow-hidden rounded-[2rem] border border-slate-200/70 bg-white/95 shadow-lg transition duration-300 hover:-translate-y-1 hover:shadow-2xl dark:border-slate-700 dark:bg-slate-900">
+      <div className="overflow-hidden rounded-[1.75rem]">
+        <Image
+          src={img}
+          alt={title}
+          width={640}
+          height={420}
+          className="h-64 w-full object-cover transition duration-500 group-hover:scale-105"
+        />
+      </div>
+      <div className="p-6 sm:p-8">
+        <div className="mb-4 text-xs font-semibold uppercase tracking-[0.24em] text-blue-600 dark:text-blue-400">
+          {category || 'Portfolio'}
+        </div>
+        <h3 className="text-xl font-semibold text-slate-900 dark:text-white">{title}</h3>
+        <div className="mt-6 flex items-center justify-between text-sm font-semibold text-slate-600 dark:text-slate-400">
+          <span>View case</span>
+          <MdArrowOutward className="text-blue-600 dark:text-blue-400" />
         </div>
       </div>
-    </div>
+    </article>
   );
 };
 

@@ -1,4 +1,3 @@
-import StyledComponentsRegistry from '../lib/registry';
 import './globals.css';
 import Script from 'next/script';
 import 'rsuite/dist/rsuite-no-reset.min.css';
@@ -22,7 +21,7 @@ export default function RootLayout({ children }) {
         <Script
           id="theme-init"
           strategy="beforeInteractive"
-          dangerouslySetInnerHTML={{__html: `(() => {
+          dangerouslySetInnerHTML={{ __html: `(() => {
             try {
               const t = localStorage.getItem('theme');
               if (t) {
@@ -33,15 +32,13 @@ export default function RootLayout({ children }) {
                 document.documentElement.classList.add('dark');
               }
             } catch (e) { }
-          })();`}}
+          })();` }}
         />
-        <StyledComponentsRegistry>
-          <CustomProvider>
-            <ThemeProvider>
-              <Layout>{children}</Layout>
-            </ThemeProvider>
-          </CustomProvider>
-        </StyledComponentsRegistry>
+        <CustomProvider>
+          <ThemeProvider>
+            <Layout>{children}</Layout>
+          </ThemeProvider>
+        </CustomProvider>
       </body>
     </html>
   );
