@@ -1,18 +1,14 @@
 'use client';
 
 import { useEffect } from 'react';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { navItems } from '@/lib/siteData';
-import { FaGithub, FaLinkedin, FaFacebookF, FaMoon, FaSun } from 'react-icons/fa';
+
 import styles from './Layout.module.scss';
-import dynamic from 'next/dynamic';
-const ThemeToggle = dynamic(() => import('@/components/ThemeToggle'), { ssr: false });
+import NavBar from '@/components/NavBar';
+import Footer from '@/components/Footer';
 import ScrollProgress from '@/components/ScrollProgress';
 import BackToTop from '@/components/BackToTop';
 
 const Layout = ({ children }) => {
-  const pathname = usePathname();
   
 
   useEffect(() => {
@@ -22,36 +18,9 @@ const Layout = ({ children }) => {
   return (
     <div className={styles.pageWrapper}>
       <ScrollProgress />
-      <header className={styles.header}>
-        <div className={styles.brand}>CodingBySahil</div>
-        <nav className={styles.navbar} aria-label='Primary navigation'>
-          {navItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={pathname === item.href ? styles.active : ''}
-            >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
-        <div className={styles.controls}>
-          <ThemeToggle />
-          <a href='https://github.com/CodingBySahil' target='_blank' rel='noreferrer' aria-label='GitHub'>
-            <FaGithub />
-          </a>
-          <a href='https://www.linkedin.com/in/codingBySAHIL' target='_blank' rel='noreferrer' aria-label='LinkedIn'>
-            <FaLinkedin />
-          </a>
-          <a href='https://www.facebook.com/codingBySahil/' target='_blank' rel='noreferrer' aria-label='Facebook'>
-            <FaFacebookF />
-          </a>
-        </div>
-      </header>
+      <NavBar />
       <main className={styles.mainContent}>{children}</main>
-      <footer className={styles.footer}>
-        <p>© {new Date().getFullYear()} CodingBySahil. All rights reserved.</p>
-      </footer>
+      <Footer />
       <BackToTop />
     </div>
   );

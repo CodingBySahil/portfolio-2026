@@ -1,0 +1,27 @@
+.footer {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border-top: 1px solid rgba(255,255,255,0.04);
+  padding: 2rem 1rem;
+}
+.inner {
+  max-width: 1180px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 220px;
+  gap: 1.25rem;
+  align-items: start;
+}
+.brand a { font-weight: 800; font-size: 1.05rem; color: var(--text); text-decoration:none }
+.brand .tag { margin-top: 0.45rem; color: var(--text-muted); font-size: 0.95rem }
+.links h4, .social h4 { margin: 0 0 0.6rem 0; color: var(--primary); font-size: 0.85rem }
+.links ul { list-style: none; padding:0; margin:0 }
+.links li { margin: 0.35rem 0 }
+.links a { color: var(--text); text-decoration: none }
+.icons { display:flex; gap:0.6rem }
+.icons a { display:inline-flex; align-items:center; justify-content:center; width:40px; height:40px; border-radius:8px; background:var(--panel); color:var(--text) }
+.bottom { margin-top:1.25rem; text-align:center; color:var(--text-muted) }
+
+@media (max-width: 880px) {
+  .inner { grid-template-columns: 1fr; }
+  .social { margin-top: 1rem }
+}
