@@ -52,7 +52,7 @@ export default function ContactPage() {
 
         <p className="mx-auto mt-6 max-w-3xl text-center text-lg leading-8 text-slate-600 dark:text-slate-300">
           Whether you have a project, an internship opportunity, freelance work,
-          collaboration, or simply want to say hello, I'm always excited to
+          collaboration, or simply want to say hello, I&apos;m always excited to
           connect with amazing people.
         </p>
       </section>
@@ -160,7 +160,7 @@ export default function ContactPage() {
               </h2>
 
               <p className="mb-8 text-slate-600 dark:text-slate-300">
-                Fill out the form below and I'll get back to you as soon as
+                Fill out the form below and I&apos;ll get back to you as soon as
                 possible.
               </p>
 

@@ -211,7 +211,7 @@ export default function SkillsPage() {
               </p>
 
               <button className="mt-10 rounded-2xl bg-blue-600 px-8 py-4 text-lg font-semibold text-white transition hover:scale-105 hover:bg-blue-700 dark:bg-cyan-500 dark:hover:bg-cyan-400">
-                Let's Build Together 🚀
+                Let&apos;s Build Together 🚀
               </button>
 
             </div>

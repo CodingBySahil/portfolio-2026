@@ -69,7 +69,7 @@ export default function Footer() {
 
         <h2 className="mt-8 text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white">
 
-          Let's build something
+          Let&apos;s build something
 
           <span className="block bg-gradient-to-r from-blue-600 via-indigo-600 to-cyan-500 bg-clip-text text-transparent dark:from-cyan-400 dark:via-blue-400 dark:to-indigo-400">
 
@@ -81,7 +81,7 @@ export default function Footer() {
 
         <p className="mt-8 max-w-2xl text-lg leading-8 text-slate-600 dark:text-slate-300">
 
-          I'm Muhammad Sahil, a Full Stack MERN Developer, AI Instructor and Computer Science Trainer.
+          I&apos;m Muhammad Sahil, a Full Stack MERN Developer, AI Instructor and Computer Science Trainer.
 
           I specialize in building modern, scalable web applications with beautiful UI, excellent user experience and high-performance architecture.
 
@@ -345,7 +345,7 @@ export default function Footer() {
                 <div className="rounded-2xl bg-white dark:bg-slate-900 px-6 py-5">
 
                   <h4 className="font-semibold text-slate-900 dark:text-white">
-                    Let's Build Something Amazing 🚀
+                    Let&apos;s Build Something Amazing 🚀
                   </h4>
 
                   <p className="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
