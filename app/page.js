@@ -353,7 +353,7 @@ export default function Home() {
             <a href="https://wa.me/923192141818" className="inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold bg-white/20 text-white border border-white/40 hover:shadow-lg hover:-translate-y-1 transition-all duration-300" target="_blank" rel="noreferrer">
               WhatsApp
             </a>
-            <a href="mailto:hello@example.com" className="inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold text-white border border-white/40 hover:bg-white/10 transition-all duration-300">
+            <a href="mailto:codingbysahil@gmail.com" className="inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold text-white border border-white/40 hover:bg-white/10 transition-all duration-300">
               Email
             </a>
           </div>
