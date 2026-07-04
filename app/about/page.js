@@ -938,7 +938,7 @@ export default function AboutPage() {
             </div>
             <div className="flex flex-wrap gap-4">
               <a
-                href="mailto:hello@example.com"
+                href="mailto:codingbysahil@gmail.com"
                 className="btn-primary inline-flex items-center justify-center rounded-3xl px-8 py-4 text-sm font-semibold shadow-xl shadow-cyan-500/20"
               >
                 Hire Me
